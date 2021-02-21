@@ -32,3 +32,14 @@ exports.delete = async (req, res, next) => {
     console.log(err);
   }
 };
+
+exports.complete = async (req, res, next) => {
+  try {
+    const todo = await Todo.findById(req.params.todoId);
+    todo.isCompleted = !todo.isCompleted;
+    await todo.save();
+    return res.json({ todoId: req.params.todoId });
+  } catch (err) {
+    console.log(err);
+  }
+};
