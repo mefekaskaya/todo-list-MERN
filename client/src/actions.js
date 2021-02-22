@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_TODOS, LOAD_TODOS } from "./constants";
+import { GET_TODOS, LOAD_TODOS, COMPLETE_TODO } from "./constants";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
@@ -15,4 +15,16 @@ export const getTodos = () => (dispatch) => {
       })
     )
     .catch((err) => console.log(err));
+};
+
+export const completeTodo = (todoId) => (dispatch) => {
+  axios
+    .post(`/todos/${todoId}/complete`)
+    .then((res) =>
+      dispatch({
+        type: COMPLETE_TODO,
+        payload: res.data.todoId,
+      })
+    )
+    .catch((error) => console.log(error));
 };
