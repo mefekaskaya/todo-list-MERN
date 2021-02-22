@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodos } from "../actions";
+import Todo from "./Todo";
 
 export default function ListTodos(props) {
   const dispatch = useDispatch();
@@ -9,6 +10,8 @@ export default function ListTodos(props) {
   useEffect(() => {
     dispatch(getTodos());
   }, []);
-  console.log(todos);
-  return <ul></ul>;
+
+  return (
+    <ul>{todos && todos.map((todo) => <Todo key={todo._id} todo={todo} />)}</ul>
+  );
 }
