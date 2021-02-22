@@ -1,4 +1,10 @@
-import { GET_TODOS, LOAD_TODOS, COMPLETE_TODO, ADD_TODO } from "./constants";
+import {
+  GET_TODOS,
+  LOAD_TODOS,
+  COMPLETE_TODO,
+  ADD_TODO,
+  DELETE_TODO,
+} from "./constants";
 
 const initialState = {
   loading: false,
@@ -37,6 +43,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         todos: [action.payload, ...state.todos],
+      };
+
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo._id !== action.payload),
       };
 
     default:

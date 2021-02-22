@@ -1,5 +1,11 @@
 import axios from "axios";
-import { GET_TODOS, LOAD_TODOS, COMPLETE_TODO, ADD_TODO } from "./constants";
+import {
+  GET_TODOS,
+  LOAD_TODOS,
+  COMPLETE_TODO,
+  ADD_TODO,
+  DELETE_TODO,
+} from "./constants";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
@@ -36,6 +42,18 @@ export const addTodo = (text, deadLine) => (dispatch) => {
       dispatch({
         type: ADD_TODO,
         payload: res.data,
+      })
+    )
+    .catch((error) => console.log(error));
+};
+
+export const deleteTodo = (todoId) => (dispatch) => {
+  axios
+    .post(`/todos/${todoId}`)
+    .then((res) =>
+      dispatch({
+        type: DELETE_TODO,
+        payload: res.data.todoId,
       })
     )
     .catch((error) => console.log(error));
