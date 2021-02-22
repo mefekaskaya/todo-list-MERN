@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const todoRoutes = require("./routes");
+const todoRoutes = require("./routes/routes");
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -32,6 +32,17 @@ app.use(cors());
 
 // routes
 app.use("/api/todos", todoRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  // All the javascript and css files will be read and served from this folder
+  app.use(express.static("client/build"));
+
+  // index.html for all page routes    html or routing and navigation
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}
 
 // run server
 app.listen(5000, () => console.log("Server is running on port 5000"));
