@@ -7,7 +7,7 @@ import {
   DELETE_TODO,
 } from "./constants";
 
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = "https://todo-list-getir.herokuapp.com/api";
 
 export const getTodos = () => (dispatch) => {
   dispatch({ type: LOAD_TODOS });
