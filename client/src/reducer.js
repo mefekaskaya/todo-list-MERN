@@ -1,4 +1,4 @@
-import { GET_TODOS, LOAD_TODOS, COMPLETE_TODO } from "./constants";
+import { GET_TODOS, LOAD_TODOS, COMPLETE_TODO, ADD_TODO } from "./constants";
 
 const initialState = {
   loading: false,
@@ -31,6 +31,12 @@ export default function (state = initialState, action) {
             };
           return todo;
         }),
+      };
+
+    case ADD_TODO:
+      return {
+        ...state,
+        todos: [action.payload, ...state.todos],
       };
 
     default:
