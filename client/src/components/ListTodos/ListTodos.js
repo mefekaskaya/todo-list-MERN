@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTodos } from "../actions";
-import Todo from "./Todo";
+import { getTodos } from "../../actions/todo";
+import Todo from "./Sections/Todo/Todo";
 
 export default function ListTodos(props) {
   const dispatch = useDispatch();

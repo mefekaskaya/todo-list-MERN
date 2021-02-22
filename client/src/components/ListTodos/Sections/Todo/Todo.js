@@ -1,8 +1,8 @@
 import React from "react";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { deleteTodo, completeTodo } from "../actions";
-import Complete from "./Complete";
+import { deleteTodo, completeTodo } from "../../../../actions/todo";
+import Complete from "../Complete/Complete";
 
 export default function Todo(props) {
   const dispatch = useDispatch();
@@ -25,8 +25,7 @@ export default function Todo(props) {
       >
         <span onClick={handleComplete}>{todo.text}</span>
         <Complete todo={todo} />
-
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center px-5">
           Deadline :&nbsp;&nbsp;
           <div>{moment(todo.deadLine).format("MMM Do YYYY")}</div>
         </div>

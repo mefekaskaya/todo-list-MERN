@@ -4,7 +4,7 @@ import {
   COMPLETE_TODO,
   ADD_TODO,
   DELETE_TODO,
-} from "./constants";
+} from "../actions/constants";
 
 const initialState = {
   loading: false,

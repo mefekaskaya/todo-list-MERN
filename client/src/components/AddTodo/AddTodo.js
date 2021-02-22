@@ -4,7 +4,7 @@ import DatePicker from "react-date-picker";
 import { FaPlus } from "react-icons/fa";
 import "./AddTodo.css";
 
-import { addTodo } from "../actions";
+import { addTodo } from "../../actions/todo";
 
 export default function AddTodo(props) {
   const dispatch = useDispatch();
